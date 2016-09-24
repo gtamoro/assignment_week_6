@@ -27,28 +27,6 @@ function runCitiPix(event) {
 }
 
 function updateBackground() {
-  removeBackground();
-  if (isValidCity()) {
-      $("body").addClass(selectedCity);   // Add class to body element (i.e. update background-image)
-    //}
-  }
-}
-
-// only add class if it's in the array
-// credit: http://stackoverflow.com/questions/14812974/check-if-value-exists-in-2d-array
-function isValidCity() {
-  if ($.inArray(selectedCity, $.map(cities, function(item) { return item[1]; })) > -1) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-// Remove any classes added to the body element
-// We don't want to add multiple classes to the body
-function removeBackground() {
-  var currentClass =  $("body").attr("class");
-  if (typeof currentClass !== "undefined" && currentClass !== "") { // only remove a class if there was one already added
-    $("body").removeClass(currentClass);
-  }
+  $("body").removeClass(); // Remove any classes added to the body, don't want to add multiple
+  $("body").addClass(selectedCity);   // Add class to body element (i.e. update background-image)
 }
