@@ -18,7 +18,8 @@ function populateList() {
   }
 }
 
-function runCitiPix() {
+function runCitiPix(event) {
+  event.preventDefault();
   city = $("#city-type").val(); // get value of option selected
   updateBackground();           // update background with image
 }
@@ -34,7 +35,7 @@ function updateBackground() {
 // We don't want to add multiple classes to the body
 function removeBackground() {
   var currentClass =  $("body").attr("class");
-  if (typeof currentClass !== "undefined" && currentClass !== "") { // only remove a class if there is one added
+  if (typeof currentClass !== "undefined" && currentClass !== "") { // only remove a class if there was one already added
     $("body").removeClass(currentClass);
   }
 }
