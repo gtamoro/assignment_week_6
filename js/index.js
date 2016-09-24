@@ -1,10 +1,12 @@
 $(document).ready(start);
 
-// valid cities
-var cities = ["NYC", "SF", "LA", "ATX", "SYD"];
-// class names of cities
-var bgNames = ["nyc","sf","la","austin","sydney"];
-var city;
+// cities [option text, class name for background]
+var cities = [["NYC","nyc"],
+              ["SF","sf"],
+              ["LA","la"],
+              ["ATX","austin"],
+              ["SYD","sydney"]];
+var selectedCity;
 
 function start() {
   populateList();
@@ -14,20 +16,31 @@ function start() {
 function populateList() {
   var option;
   for(var i = 0; i < cities.length; i++) {   // for each valid city
-    $("#city-type").append($("<option></option>").val(bgNames[i]).html(cities[i])); // add <option> html to the select
+    $("#city-type").append($("<option></option>").val(cities[i][1]).html(cities[i][0])); // add <option> html to the select
   }
 }
 
 function runCitiPix(event) {
   event.preventDefault();
-  city = $("#city-type").val(); // get value of option selected
+  selectedCity = $("#city-type").val(); // get value of option selected
   updateBackground();           // update background with image
 }
 
 function updateBackground() {
   removeBackground();
-  if ($.inArray(city, bgNames) !== -1) { // add class if it's a valid option
-    $("body").addClass(city);   // Add class to body element (i.e. update background-image)
+  if (isValidCity()) {
+      $("body").addClass(selectedCity);   // Add class to body element (i.e. update background-image)
+    //}
+  }
+}
+
+// only add class if it's in the array
+// credit: http://stackoverflow.com/questions/14812974/check-if-value-exists-in-2d-array
+function isValidCity() {
+  if ($.inArray(selectedCity, $.map(cities, function(item) { return item[1]; })) > -1) {
+    return true;
+  } else {
+    return false;
   }
 }
 
