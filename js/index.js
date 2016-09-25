@@ -15,9 +15,9 @@ function start() {
 
 function populateList() {
   var option;
-  for(var i = 0; i < cities.length; i++) {   // for each valid city
-    $("#city-type").append($("<option></option>").val(cities[i][1]).html(cities[i][0])); // add <option> html to the select
-  }
+  $.each(cities, function (index, value) {
+    $("#city-type").append($("<option></option>").val(value[1]).html(value[0])); // add <option> html to the select
+  });
 }
 
 function runCitiPix(event) {
