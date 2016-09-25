@@ -10,7 +10,7 @@ var selectedCity;
 
 function start() {
   populateList();
-  $("#city-type").change(runCitiPix);
+  $("#city-type").change(runCitiPix); // listen for when drop down is changed
 }
 
 function populateList() {
