@@ -14,7 +14,6 @@ function start() {
 }
 
 function populateList() {
-  var option;
   $.each(cities, function (index, value) {
     $("#city-type").append($("<option></option>").val(value[1]).html(value[0])); // add <option> html to the select
   });
