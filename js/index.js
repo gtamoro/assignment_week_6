@@ -6,7 +6,6 @@ var cities = [["NYC","nyc"],
               ["LA","la"],
               ["ATX","austin"],
               ["SYD","sydney"]];
-var selectedCity;
 
 function start() {
   $(cities).each(populateList);
@@ -19,11 +18,11 @@ function populateList(index, value) {
 
 function runCitiPix(event) {
   event.preventDefault();
-  selectedCity = $("#city-type").val(); // get value of option selected
-  updateBackground();           // update background with image
+  var selectedCity = $("#city-type").val(); // get value of option selected
+  updateBackground(selectedCity);           // update background with image
 }
 
-function updateBackground() {
+function updateBackground(city) {
   $("body").removeClass(); // Remove any classes added to the body, don't want to add multiple
-  $("body").addClass(selectedCity);   // Add class to body element (i.e. update background-image)
+  $("body").addClass(city);   // Add class to body element (i.e. update background-image)
 }
