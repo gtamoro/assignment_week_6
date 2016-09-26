@@ -9,14 +9,12 @@ var cities = [["NYC","nyc"],
 var selectedCity;
 
 function start() {
-  populateList();
+  $(cities).each(populateList);
   $("#city-type").change(runCitiPix); // listen for when drop down is changed
 }
 
-function populateList() {
-  $.each(cities, function (index, value) {
-    $("#city-type").append($("<option></option>").val(value[1]).html(value[0])); // add <option> html to the select
-  });
+function populateList(index, value) {
+  $("#city-type").append($("<option></option>").val(value[1]).html(value[0])); // add <option> html to the select
 }
 
 function runCitiPix(event) {
