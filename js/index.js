@@ -23,6 +23,5 @@ function runCitiPix(event) {
 }
 
 function updateBackground(city) {
-  $("body").removeClass(); // Remove any classes added to the body, don't want to add multiple
-  $("body").addClass(city);   // Add class to body element (i.e. update background-image)
+  $("body").attr("class",city);   // Replace class of body element (i.e. update background-image)
 }
